@@ -82,12 +82,31 @@
   flex-direction: column;
 }
 
-.hidden {
-  display: none;
+
+.load-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.load-btn {
+
+  border: #808080;
+  border-radius: 8%;
+  padding: 16px;
+  background-color: #4E75FF;
+  color: #FFFF;
+  margin: 30px;
+  height: 40px;
+}
+
+.load-btn:hover {
+  background-color: #6C8CFF;
 }
 
 .loader {
-  left: 45%;
+  left: 48%;
   transform: translateX(-50%);
   width: 48px;
   height: 48px;
@@ -137,3 +156,4 @@
     clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)
   }
 }
+

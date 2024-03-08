@@ -1,12 +1,20 @@
-export function getImages(request) {
-    const BASE_URL = 'https://pixabay.com/api/';
+import axios from 'axios';
+
+export async function getImages(request, page=1) {
     const KEY = '42637407-5960a3c72fe4db0c907723fc7';
 
-    return fetch(`${BASE_URL}/?key=${KEY}&q=${request}&image_type=photo&orientation=horizontal&safesearch=true`).then(resp => {
-        if (!resp.ok) {
-            throw new Error('Sorry, there are no images matching your search query. Please try again!')
+    const response = await axios.get('https://pixabay.com/api/', {
+        params: {
+            key: KEY,
+            q: request,
+            page: page,
+            image_type: "photo",
+            orientation: "horizontal",
+            safesearch: true,
+            per_page: 15,
         }
-        return resp.json();
     });
-    
+    return response.data;
 }
+
+
