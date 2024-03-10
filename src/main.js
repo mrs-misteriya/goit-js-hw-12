@@ -90,10 +90,7 @@ function onClick() {
             lightbox.refresh(); 
             const listItem = document.querySelector('.js-list-item').getBoundingClientRect();
                const x = listItem.x * 2;
-               window.scrollBy({
-                   top: x,
-                   behavior: "smooth",
-               });
+            window.scrollBy(0, x);
         }
     }).catch((err) => console.log(err));
 }
