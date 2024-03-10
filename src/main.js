@@ -46,17 +46,14 @@ function onSearch(event) {
                loadBtn.hidden = true;
                list.innerHTML = createMarkup(data);
                lightbox.refresh();
-               const listItem = document.querySelector('.js-list-item').getBoundingClientRect();
-               const x = listItem.x * 2;
-               window.scrollBy(x, 0);
+               iziToast.info({
+                message: "We're sorry, but you've reached the end of search results.",
+            });
               
            } else if (data.hits.length > 14) {
                loadBtn.hidden = false;
                list.innerHTML = createMarkup(data);
                lightbox.refresh();
-               const listItem = document.querySelector('.js-list-item').getBoundingClientRect();
-               const x = listItem.x * 2;
-               window.scrollBy(x, 0);
            } else{
             list.innerHTML = null;
             iziToast.error({
@@ -86,12 +83,17 @@ function onClick() {
             lightbox.refresh(); 
             loadBtn.hidden = true;
             iziToast.info({
-                title: 'Hello',
                 message: "We're sorry, but you've reached the end of search results.",
             });           
         } else {
             list.insertAdjacentHTML('beforeend', createMarkup(data));
             lightbox.refresh(); 
+            const listItem = document.querySelector('.js-list-item').getBoundingClientRect();
+               const x = listItem.x * 2;
+               window.scrollBy({
+                   top: x,
+                   behavior: "smooth",
+               });
         }
     }).catch((err) => console.log(err));
 }
